@@ -23,12 +23,12 @@ int main(){
                 auto start = chrono::high_resolution_clock::now();
                 a->insertar(temp);
                 auto end = chrono::high_resolution_clock::now();
-                tiempo += chrono::duration_cast<chrono::milliseconds>(end-start).count();
+                tiempo += chrono::duration_cast<chrono::microseconds>(end-start).count();
             }
             tiempo = tiempo / repeticiones;
             delete a;
         }
-        cout<< i << ";" << tiempo <<endl;
+        cout<< i << ";" << (int)tiempo <<endl;
         tiempo = 0;
     }
 }

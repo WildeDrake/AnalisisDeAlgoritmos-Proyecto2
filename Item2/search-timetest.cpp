@@ -29,16 +29,14 @@ int main(){
     double tiempo = 0;
     for(int i = 1000; i < 20000; i+=1000){
         BinomialArray* a = generateList(i);
+        double temp = 8.0;
         auto start = chrono::high_resolution_clock::now();
         for(int j=0; j < repeticiones; ++j ){
-            int x =  rand() % 60;
-            x = x+10;
-            double temp =  x / 10.0;
             a->Buscar(temp);
         }
-    auto end = chrono::high_resolution_clock::now();
-    tiempo = chrono::duration_cast<chrono::nanoseconds>(end-start).count() / repeticiones;
-    cout<< i << ";" << tiempo <<endl;
-    delete a;
+        auto end = chrono::high_resolution_clock::now();
+        tiempo = chrono::duration_cast<chrono::nanoseconds>(end-start).count() / repeticiones;
+        cout<< i << ";" << tiempo <<endl;
+        delete a;
     }
 }
