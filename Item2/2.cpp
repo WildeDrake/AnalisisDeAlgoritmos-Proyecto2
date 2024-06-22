@@ -83,7 +83,7 @@ struct BinomialArray {
 
 
 
-int main() {
+/*int main() {
     BinomialArray pe;
     pe.insertar(2.7);
     pe.insertar(3.5);
@@ -104,4 +104,4 @@ int main() {
     cout << endl;
 
     return 0;
-}
+}*/
