@@ -5,6 +5,7 @@
 #include <random>
 #include <cstdlib>
 #include <ctime>
+#include <cmath>
 
 using namespace std;
 using namespace std::chrono;
@@ -25,10 +26,10 @@ BinomialArray* generateList(int size){
 
 int main(){
     cout<<"Size"<<";"<<"Time "<<endl;
-    int repeticiones = 10;
+    int repeticiones = 100;
     double tiempo = 0;
-    for(int i = 1000; i < 20000; i+=1000){
-        BinomialArray* a = generateList(i);
+    for(int i = 1024; i < pow(2,25); i = (i*2)){
+        BinomialArray* a = generateList(i-1);
         double temp = 777.77;
         for(int j=0; j < repeticiones; ++j ){
             auto start = chrono::high_resolution_clock::now();
@@ -37,7 +38,7 @@ int main(){
             tiempo += chrono::duration_cast<chrono::nanoseconds>(end-start).count();
         }
         tiempo /= repeticiones;
-        cout<< i << ";" << tiempo <<endl;
+        cout<< i-1 << ";" << (int)tiempo <<endl;
         delete a;
     }
 }
