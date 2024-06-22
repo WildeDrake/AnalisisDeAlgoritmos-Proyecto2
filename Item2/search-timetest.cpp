@@ -1,8 +1,11 @@
 #include "2.cpp"
 #include <iostream>
 #include <chrono>
-#include <bits/stdc++.h>
 #include <ctime>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 using namespace std::chrono;
 
