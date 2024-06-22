@@ -48,8 +48,9 @@ struct BinomialArray {
         }
     }
 
+    // Esto es una Búsqueda Binaria recursiva común y corriente.
     double binarySearch(double* array, int size, double x) {
-    int left = 0;
+    int left = 0; 
     int right = size - 1;
     while (left <= right) {
         int mid = left + (right - left) / 2;
@@ -65,11 +66,13 @@ struct BinomialArray {
     return -1;
     }
 
-    pair<int, int> Buscar(BinomialArray& pe, double x) {
+    // Retorno: (i, j) con i es el indice del array y j es el indice del elemento en el array.
+    // x: valor a buscar.
+    pair<int, int> Buscar(double x) {
         int i = 0;
-        while (i < pe.NumArrays) {
-            int iarray = binarySearch(pe.Arrays[i], pe.sizes[i], x);
-            if (iarray != -1) {
+        while (i < NumArrays) { //NumArrays almacena los arrays que hay en el BinomialArray.
+            int iarray = binarySearch(Arrays[i], sizes[i], x); // Realizamos una busqueda binaria en el array i.
+            if (iarray != -1) { 
                 return {i, iarray};
             }
             i++;
