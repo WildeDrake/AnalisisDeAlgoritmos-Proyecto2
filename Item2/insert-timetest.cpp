@@ -25,7 +25,7 @@ int main(){
                 auto end = chrono::high_resolution_clock::now();
                 tiempo += chrono::duration_cast<chrono::microseconds>(end-start).count();
             }
-            tiempo = tiempo / repeticiones;
+            tiempo /= repeticiones;
             delete a;
         }
         cout<< i << ";" << (int)tiempo <<endl;
