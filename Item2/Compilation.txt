@@ -1,0 +1,10 @@
+	
+Para test de search:
+	g++ -o test1 search-timetest.cpp
+	Si se quiere el timetest en .csv:
+	./test1 >> test-search.csv
+Para test de insert:
+	g++ -o test2 insert-timetest.cpp
+	Si se quiere el timetest en .csv:
+	./test2 >> test-insert.csv
+
