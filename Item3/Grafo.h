@@ -11,7 +11,6 @@ struct Grafo {
     int V;
     int E;
     bool** MatrizAdyacencia;
-    pair<int, int> *Grados;
 
     Grafo (string nombreArchivo) {
         ifstream file(nombreArchivo);
@@ -27,10 +26,6 @@ struct Grafo {
             }
         }
         E = 0;
-        Grados = new pair<int, int>[V];
-        for (int i = 0 ; i < V ; i++) {
-            Grados[i] = make_pair(i, 0);
-        }
         while (getline(file, line)) {
             stringstream ss(line);
             int v, w;
@@ -38,17 +33,9 @@ struct Grafo {
             if (MatrizAdyacencia[v-1][w-1] == false ){
                 MatrizAdyacencia[v-1][w-1] = true;
                 MatrizAdyacencia[w-1][v-1] = true;
-                Grados[v-1].second++;
-                Grados[w-1].second++;
                 E++;
             }
         }
-    }
-
-    void OrdenarGrados() {
-        sort(Grados, Grados + V, [](pair<int, int> a, pair<int, int> b) {
-            return a.second > b.second;
-        });
     }
 
     vector<pair<int, int>> listaAristas() {
@@ -78,6 +65,5 @@ struct Grafo {
             delete[] MatrizAdyacencia[i];
         }
         delete[] MatrizAdyacencia;
-        delete[] Grados;
     }
 };
