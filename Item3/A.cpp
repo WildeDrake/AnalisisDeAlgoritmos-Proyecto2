@@ -19,7 +19,7 @@ vector<int> A(Grafo G) {
 }
 
 int main() {
-    Grafo G("grafo1.txt");
+    Grafo G("grafo3.txt");
     vector<int> C = A(G);
     for (int i = 0 ; i < C.size() ; i++) {
         cout << C[i] << ", ";
