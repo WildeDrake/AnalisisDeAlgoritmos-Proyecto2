@@ -42,11 +42,11 @@ vector<int> Bstrat(Grafo grafo){
 }
 
 int main(){
-    Grafo g("grafo2.txt");
+    Grafo g("grafo1.txt");
     vector<int> B = Bstrat(g);
     for(int i = 0; i < B.size(); ++i){
-        cout<<B.at(i)<<endl;
+        cout<<B.at(i) << ", ";
     }
-    cout<<"Nodos totales: "<<B.size();
-    //g.imprimir();
+    cout<<endl;
+    cout<<"Tamano: "<<B.size();
 }

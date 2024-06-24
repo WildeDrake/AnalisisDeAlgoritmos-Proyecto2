@@ -15,3 +15,11 @@ Para probar Grafo Estrategia A:
 		g++ -o B B.cpp
 	Ejecutar con:
 		./B
+
+
+Para probar con diferentes Grafos cambiar el txt del contructor de Grafo en main: 
+Grafo g("inserte_nombre_de_archivo");
+entradas válidas:
+- grafo1.txt
+- grafo2.txt
+- grafo3.txt
