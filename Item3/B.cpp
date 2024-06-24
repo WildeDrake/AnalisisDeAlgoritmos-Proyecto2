@@ -1,9 +1,4 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <algorithm>
-#include "Grafo.cpp"
-#include <vector>
+#include "Grafo.h"
 
 using namespace std;
 

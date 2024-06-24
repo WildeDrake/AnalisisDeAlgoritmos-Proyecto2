@@ -81,12 +81,3 @@ struct Grafo {
         delete[] Grados;
     }
 };
-
-
-/*
-int main() {
-    Grafo g("grafo2.txt");
-    g.imprimir();
-    return 0;
-}
-*/

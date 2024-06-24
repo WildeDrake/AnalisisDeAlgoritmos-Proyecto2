@@ -1,11 +1,9 @@
-#include "2.cpp"
-#include <iostream>
+#include "BinomialArray.h"
 #include <chrono>
 #include <ctime>
 #include <random>
 #include <cstdlib>
 #include <ctime>
-#include <cmath>
 
 using namespace std;
 using namespace std::chrono;

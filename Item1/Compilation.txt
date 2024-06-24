@@ -1,0 +1,5 @@
+Para probar el algoritmo Las Vegas:
+    Compilar con:
+        g++ -o LasVegas LasVegas.cpp
+    Ejecutar con:
+        ./LasVegas

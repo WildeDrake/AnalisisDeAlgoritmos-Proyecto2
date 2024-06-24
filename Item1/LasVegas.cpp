@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int* Vegas(int N, int* P, int* U){
+int* LasVegas(int N, int* P, int* U){
     // Setear el arreglo de 0 hasta N-1. O(n).
     int* A = new int[N];
     for(int i = 0 ; i < N ; i++){
@@ -37,7 +37,7 @@ int main(){
     int N = 7;
     int P[] = {8, 20, 10, 3, 50, 2, 5};
     int U[] = {10, 2, 50, 8, 20, 5, 3};
-    int* A = Vegas(N, P, U);
+    int* A = LasVegas(N, P, U);
     for(int i = 0 ; i < N ; i++){
         std::cout << A[i] << " ";
     }

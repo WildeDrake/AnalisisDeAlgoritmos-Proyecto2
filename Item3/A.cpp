@@ -1,5 +1,4 @@
-#include "Grafo.cpp"
-#include <vector>
+#include "Grafo.h"
 
 
 vector<int> A(Grafo G) {
