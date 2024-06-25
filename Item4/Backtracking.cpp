@@ -24,31 +24,50 @@ class Backtracking{
                 cout<<"Llega al caso base"<<endl;
                 if(penalizacion < puntajeSolucion){
                     puntajeSolucion = penalizacion;
-                    mejorSolucion = A;
-                    cout<<"Cambio de sol. óptima"<<endl;
+                    mejorSolucion.clear();
+                    for(int i = 0; i < A.size(); i++){
+                        mejorSolucion.push_back(A[i]);
+                    }
                 }
             } else { // Caso recursivo 
                 for(int i = 0 ; i < m; i++){
+                    cout<<"Altura: " <<k<<"---------------------------------------------------------"<<endl;
+                    // imprimir equipos
+                    cout<<"equipos"<<endl;
+                    for (int j = 0; j < n; j++) {
+                        cout << equipos[j] << ", ";
+                    }
+                    cout<<"\nbuses"<<endl;
+                    for (int j = 0; j < m; j++) {
+                        cout << Buses[j] << ", ";
+                    }
+                    
                     cout<<"suma: "<<suma<<endl;
-                    if (Buses[i]  > 0){
-                        if(Buses[i] >= equipos[k]){ //Caso en que un bus puede dejar entrear un equipo
-                            cout<<"equipo: "<<k<<" entro al bus "<<i<<endl;
+                    if (Buses[i] > 0){
+                        if(Buses[i] >= equipos[k]){ //Caso en que un bus puede dejar entrar un equipo
+                            cout<<"Primera Recursion"<<endl;
+                            int aux1 = equipos[k];
+                            int aux2 = Buses[i];
                             A.push_back({i, k, equipos[k]});
                             Buses[i] -= equipos[k];
+                            equipos[k] = 0;
+                            BacktrackingDFS(A, k+1, Buses, equipos, penalizacion, suma - aux1);
+                            A.pop_back();
+                            equipos[k] = aux1;
+                            Buses[i] = aux2;
 
-                            BacktrackingDFS(A, k+1, Buses, equipos, penalizacion, suma - equipos[k]);
                         } else {    //Caso en que se va a dejar a una fracción del equipo en el bus
-                            cout<<"Buses[i]: "<<Buses[i]<<endl;
-                            cout<<"equipos[k]: "<<equipos[k]<<endl;
-                            cout<<"equipo: "<<k<<" entro medianamente al bus "<<i<<" , entraron "<<Buses[i]<<" personas del equipo"<<endl;
+                            cout<<"Segunda Recursion"<<endl;
+                            int aux1 = equipos[k];
+                            int aux2 = Buses[i];
                             equipos[k] -= Buses[i];
                             A.push_back({i, k, Buses[i]});
-                            temp = Buses[i];
                             Buses[i] = 0;
-                            cout<<"equipos[k] restante: "<<equipos[k]<<endl;
-
-                            if(equipos[k] > 0) BacktrackingDFS(A, k, Buses, equipos, penalizacion + equipos[k], suma - temp);
+                            if(equipos[k] > 0) BacktrackingDFS(A, k, Buses, equipos, penalizacion + aux1, suma - aux2);
                             else BacktrackingDFS(A, k+1, Buses, equipos, penalizacion, suma - temp);
+                            A.pop_back();
+                            equipos[k] = aux1;
+                            Buses[i] = aux2;
                         }
                     }
                 }
@@ -91,7 +110,7 @@ int main(){
     int m = 4; // Cantidad de buses.
     int P = 50; // Asientos por bus.
     int n = 6; // Cantidad de equipos.
-    int equipos[6] = {10, 20, 30, 40, 50, 60};
+    int equipos[6] = {40, 30, 40, 50, 10, 30};
     Backtracking b(m, P, n, equipos);
     vector<tupla> mejorSolucion = b.getMejorSolucion();
     for (int i = 0; i < mejorSolucion.size(); ++i) {
