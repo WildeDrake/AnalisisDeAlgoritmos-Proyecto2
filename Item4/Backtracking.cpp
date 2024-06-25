@@ -26,15 +26,18 @@ class Backtracking{
                 }
             } else { // Caso recursivo 
                 for(int i = 0 ; i < m; i++){
-                    if(Buses[i] >= equipos[k]){
-                        A.push_back({i, k, equipos[k]});
-                        Buses[i] -= equipos[k];
-                        BacktrackingDFS(A, k+1, Buses, equipos, penalizacion, suma - equipos[k]);
-                    } else {
-                        equipos[k] -= Buses[i];
-                        A.push_back({i, k, Buses[i]});
-                        Buses[i] = 0;
-                        BacktrackingDFS(A, k, Buses, equipos, penalizacion + equipos[k], suma - Buses[i]);
+                    if (Buses[i]  > 0){
+                        if(Buses[i] >= equipos[k]){
+                            A.push_back({i, k, equipos[k]});
+                            Buses[i] -= equipos[k];
+                            BacktrackingDFS(A, k+1, Buses, equipos, penalizacion, suma - equipos[k]);
+                        } else {
+                            equipos[k] -= Buses[i];
+                            A.push_back({i, k, Buses[i]});
+                            Buses[i] = 0;
+                            if(equipos[k] > 0) BacktrackingDFS(A, k, Buses, equipos, penalizacion + equipos[k], suma - Buses[i]);
+                            else BacktrackingDFS(A, k+1, Buses, equipos, penalizacion, suma - Buses[i]);
+                        }
                     }
                 }
             }
