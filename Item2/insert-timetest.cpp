@@ -28,4 +28,5 @@ int main(){
         cout<< i << ";" << (int)tiempo <<endl;
         tiempo = 0;
     }
+    return 0;
 }

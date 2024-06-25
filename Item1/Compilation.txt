@@ -1,5 +1,11 @@
 Para probar el algoritmo Las Vegas:
     Compilar con:
-        g++ -o LasVegas LasVegas.cpp
+        g++ -o main main.cpp
     Ejecutar con:
-        ./LasVegas
+        ./main
+
+Para hacer un test de tiempo al algoritmo Las Vegas:
+    Compilar con:
+        g++ -o TimeTest TimeTest.cpp
+    Ejecutar con:
+        ./TimeTest > TimeTest.csv

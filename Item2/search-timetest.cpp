@@ -39,4 +39,5 @@ int main(){
         cout<< i-1 << ";" << (int)tiempo <<endl;
         delete a;
     }
+    return 0;
 }
