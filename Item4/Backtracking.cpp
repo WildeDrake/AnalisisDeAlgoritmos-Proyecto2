@@ -20,6 +20,9 @@ class Backtracking{
             // Cota de poda.
             if(penalizacion >= puntajeSolucion) return;
 
+            // Cota de solución optima.
+            if(puntajeSolucion == 0) return;
+
             // Caso base.
             if(suma == 0){
                 if(penalizacion < puntajeSolucion){
