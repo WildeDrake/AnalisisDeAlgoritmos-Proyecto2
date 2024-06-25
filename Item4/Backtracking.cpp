@@ -12,50 +12,50 @@ struct tupla{
 
 class Backtracking{
     private:
-        int m;
-        int P;
-        int n;
-        vector<int> equipos;
+        int m; // Cantidad de buses.
+        int P; // Asientos por bus.
+        int n; // Cantidad de equipos.
         vector<tupla> mejorSolucion;
         int puntajeSolucion;
 
-        void BacktrackingDFS(vector<tupla> A, int k){
-            if(k == n){
-                int penalizacion = 0;
-                for(int i = 0; i < m; i++){
-                    int asientos = 0;
-                    for(int j = 0; j < A.size(); j++){
-                        if(A[j].bus == i){
-                            asientos += A[j].miembros;
-                        }
-                    }
-                    if(asientos > P){
-                        penalizacion += asientos - P;
-                    }
-                }
+        void BacktrackingDFS(vector<tupla> A, int k, int* Buses, int* equipos, int penalizacion, int suma){
+            if(suma == 0){ // Caso base
                 if(penalizacion < puntajeSolucion){
                     puntajeSolucion = penalizacion;
                     mejorSolucion = A;
                 }
-            }else{
-                for(int i = 0; i < m; i++){
-                    A.push_back({i, k, equipos[k]});
-                    BacktrackingDFS(A, k + 1);
-                    A.pop_back();
+            } else { // Caso recursivo 
+                for(int i = 0 ; i < m; i++){
+                    if(Buses[i] >= equipos[k]){
+                        A.push_back({i, k, equipos[k]});
+                        Buses[i] -= equipos[k];
+                        BacktrackingDFS(A, k+1, Buses, equipos, penalizacion, suma - equipos[k]);
+                    } else {
+                        equipos[k] -= Buses[i];
+                        A.push_back({i, k, Buses[i]});
+                        Buses[i] = 0;
+                        BacktrackingDFS(A, k, Buses, equipos, penalizacion + equipos[k], suma - Buses[i]);
+                    }
                 }
             }
         }
 
     public:
-        Backtracking(int m, int P, int n, vector<int> equipos){
+        Backtracking(int m, int P, int n, int* equipos){
             this->m = m;
             this->P = P;
             this->n = n;
             this->puntajeSolucion = INT_MAX;
-            this->equipos = equipos;
             vector<tupla> A;
-            int k = 0;
-            BacktrackingDFS(A, k);
+            int* buses = new int[m];
+            for(int i = 0; i < m; i++){
+                buses[i] = P;
+            }
+            int suma = 0;
+            for(int i = 0; i < n; i++){
+                suma += equipos[i];
+            }
+            BacktrackingDFS(A, 0, buses, equipos, 0, suma);
         }
         
         vector<tupla> getMejorSolucion(){
@@ -76,7 +76,7 @@ int main(){
     int m = 4; // Cantidad de buses.
     int P = 50; // Asientos por bus.
     int n = 6; // Cantidad de equipos.
-    vector<int> equipos = {40, 20, 40, 50, 10, 30};
+    int equipos[6] = {10, 20, 30, 40, 50, 60};
     Backtracking b(m, P, n, equipos);
     vector<tupla> mejorSolucion = b.getMejorSolucion();
     for (int i = 0; i < mejorSolucion.size(); ++i) {
