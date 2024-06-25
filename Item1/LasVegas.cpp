@@ -43,5 +43,7 @@ int main(){
     }
     std::cout << std::endl;
     delete[] A;
+    delete[] P;
+    delete[] U;
     return 0;
 }

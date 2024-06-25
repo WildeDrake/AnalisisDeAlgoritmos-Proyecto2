@@ -22,6 +22,6 @@ int main() {
     cout<<"Buscar "<<endl;
     pair woah = pe.Buscar(3.0);
     cout<<"Posicion del array: "<<woah.first<<" Posicion dentro del array: "<<woah.second<<endl;
-
+    delete &pe;
     return 0;
 }

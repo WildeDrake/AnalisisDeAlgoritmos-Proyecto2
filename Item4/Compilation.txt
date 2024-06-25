@@ -1,0 +1,5 @@
+Para probar Algoritmo de Backtracking:
+	Compilar con:
+		g++ -o Backtracking Backtracking.cpp
+	Ejecutar con:
+		./Backtracking

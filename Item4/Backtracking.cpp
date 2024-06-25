@@ -61,6 +61,8 @@ class Backtracking{
                     }
                 }
             }
+            delete[] Buses;
+            delete[] equipos;
         }
 
     public:
@@ -92,12 +94,11 @@ class Backtracking{
 
 
 
-
 int main(){
     int m = 4; // Cantidad de buses.
     int P = 50; // Asientos por bus.
     int n = 6; // Cantidad de equipos.
-    int equipos[6] = {40, 30, 40, 50, 10, 30};
+    int equipos[6] = {40, 20, 40, 50, 10, 30};
     Backtracking b(m, P, n, equipos);
     vector<tupla> mejorSolucion = b.getMejorSolucion();
     for (int i = 0; i < mejorSolucion.size(); ++i) {
