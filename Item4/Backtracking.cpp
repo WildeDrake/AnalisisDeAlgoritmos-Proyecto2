@@ -63,7 +63,7 @@ class Backtracking{
                             equipos[k] -= Buses[i];
                             A.push_back({i, k, Buses[i]});
                             Buses[i] = 0;
-                            if(equipos[k] > 0) BacktrackingDFS(A, k, Buses, equipos, penalizacion + aux1, suma - aux2);
+                            if(equipos[k] > 0) BacktrackingDFS(A, k, Buses, equipos, penalizacion + min(equipos[k], aux2), suma - aux2);
                             else BacktrackingDFS(A, k+1, Buses, equipos, penalizacion, suma - temp);
                             A.pop_back();
                             equipos[k] = aux1;
